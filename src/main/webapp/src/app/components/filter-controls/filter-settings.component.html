@@ -1,0 +1,32 @@
+<div class="filter-settings-container">
+  <div *ngIf="isLoadingSettings" class="filter-settings-loader">
+    <mat-spinner diameter="75"></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoadingSettings">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter name</mat-label>
+      <input matInput [(ngModel)]="filterSettingsData.name">
+    </mat-form-field>
+
+    <h4>Filter conditions</h4>
+    <div class="filter-conditions">
+      <app-filter-field-condition *ngFor="let condition of filterSettingsData.genericConditions; let isLastCondition = last;"
+                                  [genericConditions]="filterSettingsData.genericConditions!"
+                                  [currentCondition]="condition" [isLastCondition]="isLastCondition" [filterSettingsFramework]="filterSettingsFramework!" [rowCounter]="rowCounter"
+                                  (genericConditionsChange)="updateGenericConditions($event)" (rowCounterChange)="increaseRowCounter()">
+      </app-filter-field-condition>
+    </div>
+
+    <h4>Entry should... </h4>
+    <mat-radio-group aria-label="Entry should" class="condition-matching-options" [(ngModel)]="filterSettingsData.matchingOptionId">
+      <mat-radio-button *ngFor="let option of filterSettingsFramework?.conditionMatchingOptions" [value]="option.id">{{ option.name }}</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="filter-actions">
+      <button mat-raised-button color="primary">Apply filter</button>
+      <button mat-flat-button color="accent" (click)="saveFilterSettings()">Save filter</button>
+      <button mat-button color="warn">Clear settings</button>
+    </div>
+  </div>
+</div>

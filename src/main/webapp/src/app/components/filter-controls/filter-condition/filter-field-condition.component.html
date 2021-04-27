@@ -1,0 +1,57 @@
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Field</mat-label>
+    <mat-select [(ngModel)]="currentCondition.field" name="countrySelection" (selectionChange)="updateGenericConditions()">
+      <mat-option *ngFor="let field of filterSettingsFramework.conditionFieldNames" [value]="field">
+        {{ field.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 1">
+    <mat-label>Amount parameter</mat-label>
+    <mat-select [(ngModel)]="currentCondition.amountParameter" name="countrySelection" (selectionChange)="updateGenericConditions()">
+      <mat-option *ngFor="let amountParameter of filterSettingsFramework.conditionAmountParameters" [value]="amountParameter">
+        {{ amountParameter.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 2">
+    <mat-label>Title parameter</mat-label>
+    <mat-select [(ngModel)]="currentCondition.titleParameter" name="countrySelection" (selectionChange)="updateGenericConditions()">
+      <mat-option *ngFor="let titleParameter of filterSettingsFramework.conditionTitleParameters" [value]="titleParameter">
+        {{ titleParameter.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 3">
+    <mat-label>Date parameter</mat-label>
+    <mat-select [(ngModel)]="currentCondition.dateParameter" name="countrySelection" (selectionChange)="updateGenericConditions()">
+      <mat-option *ngFor="let dateParameter of filterSettingsFramework.conditionDateParameters" [value]="dateParameter">
+        {{ dateParameter.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 1">
+    <mat-label>Number</mat-label>
+    <input type="number" matInput [(ngModel)]="currentCondition.amountParameterValue" (change)="updateGenericConditions()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 2">
+    <mat-label>Text</mat-label>
+    <input matInput [(ngModel)]="currentCondition.titleParameterValue" (change)="updateGenericConditions()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="currentCondition.field?.id === 3">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="currentCondition.dateParameterValue" (dateChange)="updateGenericConditions()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-stroked-button color="warn" (click)="removeCondition()" *ngIf="genericConditions.length > 1"><mat-icon>remove</mat-icon></button>
+  <button mat-stroked-button color="primary" (click)="addCondition()" *ngIf="isLastCondition"><mat-icon>add</mat-icon></button>
+</div>

@@ -1,0 +1,120 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* NOTE: Specific component css styles should be in their own file, but project requirement was that everything is in 1 external file */
+
+/* app.component.html */
+.landing-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.show-dialog-button {
+  margin-top: 20px !important;
+  height: 50px;
+  width: 200px;
+  font-size: 22px;
+}
+
+/* filter-dialog.component.html */
+.dialog-box {
+  box-sizing: border-box;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  border-radius: 4px;
+  position:absolute;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.dialog-box:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.title-bar {
+  width: 100%;
+  height: 25px;
+  background-color: lightgray;
+
+  mat-icon {
+    float: right;
+    color:gray;
+    cursor: pointer;
+  }
+}
+
+.title-bar:hover {
+  cursor: move;
+}
+
+.dialog-content {
+  overflow: auto;
+  height: 100%
+}
+
+.bottom-bar {
+  position: absolute;
+  height: 10px;
+  background-color: lightgray;
+  width: 100%;
+  cursor: s-resize;
+}
+
+/* filter-settings.component.html */
+.filter-settings-container {
+  height: calc(100% - 40px);
+  padding: 20px;
+}
+
+.filter-settings-loader {
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.filter-settings-container > * {
+  width: 100%;
+}
+
+.filter-conditions {
+  mat-form-field {
+    margin-right: 20px;
+    max-width: 200px;
+  }
+
+  button {
+    height: 52px;
+    position: relative;
+    top: -5px;
+    margin-right: 10px;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: 0.5em;
+  }
+}
+
+.condition-matching-options {
+  mat-radio-button {
+    margin-right: 30px;
+  }
+}
+
+.filter-actions {
+  margin-top: 30px;
+
+  button {
+    margin-right: 15px;
+  }
+}

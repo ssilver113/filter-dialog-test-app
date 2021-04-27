@@ -1,0 +1,5 @@
+<div class="landing-page-container">
+  <app-filter-dialog *ngFor="let dialogId of filterDialogs;" [dialogId]="dialogId" [filterDialogs]="filterDialogs"
+                     [currentTopDialogZIndex]="currentTopDialogZIndex" (increaseTopDialogZIndex)="increaseTopDialogZIndex()"></app-filter-dialog>
+  <button mat-raised-button color="primary" (click)="openFilterDialog()" class="show-dialog-button">Show Dialog</button>
+</div>

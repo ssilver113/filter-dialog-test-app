@@ -1,0 +1,13 @@
+<div #resizeBox cdkDrag class="dialog-box" [ngStyle]="{ 'top': 'calc(50% - ' + getDialogLocationTop(dialogId) + 'px)', 'left': 'calc(50% - ' + getDialogLocationLeft(dialogId) + 'px)',
+          'height': dialogHeight + 'px', 'width': dialogWidth + 'px', 'z-index': dialogZIndex }" (click)="bringToFront()">
+  <div class="title-bar" [ngStyle]="{ 'height': titleBarHeight + 'px' }" cdkDragHandle>
+    <mat-icon (click)="closeDialog(dialogId)">close</mat-icon>
+  </div>
+
+  <span #dragHandleBottom class="bottom-bar" [ngStyle]="{ 'height': bottomBarHeight }" cdkDrag (cdkDragMoved)="resizeHeight()"></span>
+
+  <div #dialogContent class="dialog-content">
+    <app-filter-settings></app-filter-settings>
+  </div>
+</div>
+
