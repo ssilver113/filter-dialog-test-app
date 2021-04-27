@@ -15,8 +15,7 @@ public class FilterSettingsController {
 	}
 
 	@GetMapping("/{id}")
-	public @ResponseBody
-	FilterSettings getFilterSettingsById(
+	public @ResponseBody FilterSettings getFilterSettingsById(
 			@PathVariable("id") int id) {
 		return filterService.getFilterSettingsById(id);
 	}

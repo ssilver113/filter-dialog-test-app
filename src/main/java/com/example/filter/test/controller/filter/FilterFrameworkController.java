@@ -14,8 +14,7 @@ public class FilterFrameworkController {
 		this.filterService = filterService;
 	}
 
-	@GetMapping() public @ResponseBody
-	FilterSettingsFramework getFilterSettingsFramework() {
+	@GetMapping() public @ResponseBody FilterSettingsFramework getFilterSettingsFramework() {
 		return filterService.getFilterSettingsFramework();
 	}
 }
