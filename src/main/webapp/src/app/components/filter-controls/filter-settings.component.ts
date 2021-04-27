@@ -29,7 +29,7 @@ export class FilterSettingsComponent implements OnInit {
 
     getFilterSettingsFromAPI() {
         this.http
-            .get<FilterSettingsFramework>('v1/filter-settings-framework')
+            .get<FilterSettingsFramework>('v1/filter-framework')
             .subscribe((filterSettingsFramework: FilterSettingsFramework) => {
                 this.filterSettingsFramework = filterSettingsFramework
 
